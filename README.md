@@ -102,19 +102,23 @@ node index.js
 ```
 
 ## Troubleshoot
-#### error: 'webpack-dev-server' is not recognized as an internal or external command
-- Deleted the node_modules folder, the one within the /app folder
-- Executed "npm install" command from the /app folder
+#### Error 1 
+```
+'webpack-dev-server' is not recognized as an internal or external command
+```
+**Solution:**
+- Delete the node_modules folder, the one within the /app folder
+- Execute `npm install` command from the /app folder
 
-After a long install, everything works just fine!
+After a long install, everything will work just fine!
 
 
-#### ParserError: Source file requires different compiler version. 
-The error may further read:
-```bash
+#### Error 2
+```
+ParserError: Source file requires different compiler version. 
 Error: Truffle is currently using solc 0.5.16, but one or more of your contracts specify "pragma solidity >=0.X.X <0.X.X".
 ```
-In such a case, ensure the following in `truffle-config.js`:
+**Solution:** In such a case, ensure the following in `truffle-config.js`:
 ```js
 // Configure your compilers  
 compilers: {    
@@ -124,4 +128,7 @@ compilers: {
     // ...
 ```
 
->Feel free to raise a [Pull Request](https://github.com/udacity/nd1309-p2-Decentralized-Star-Notary-Service-Starter-Code/pulls) if you find a bug/scope of improvement in the current repository. 
+## Raise a PR or report and Issue
+1. Feel free to raise a [Pull Request](https://github.com/udacity/nd1309-p2-Decentralized-Star-Notary-Service-Starter-Code/pulls) if you find a bug/scope of improvement in the current repository. 
+
+2. If you have suggestions or facing issues, you can log in issue. 
