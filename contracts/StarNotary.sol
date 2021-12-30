@@ -11,9 +11,17 @@ contract StarNotary is ERC721 {
         string name;
     }
 
+    string public tokenName;
+    string public tokenSymbol;
+
     // Implement Task 1 Add a name and symbol properties
     // name: Is a short name to your token
     // symbol: Is a short string like 'USD' -> 'American Dollar'
+    // Visibility is not needed in recent versions of solidity
+    constructor(string memory name_, string memory symbol_) public {
+        tokenName = name_;
+        tokenSymbol = symbol_;
+    }
     
 
     // mapping the Star with the Owner Address
@@ -57,20 +65,29 @@ contract StarNotary is ERC721 {
     // Implement Task 1 lookUptokenIdToStarInfo
     function lookUptokenIdToStarInfo (uint _tokenId) public view returns (string memory) {
         //1. You should return the Star saved in tokenIdToStarInfo mapping
+        string memory star = tokenIdToStarInfo[_tokenId].name;
+        return star; 
     }
 
     // Implement Task 1 Exchange Stars function
     function exchangeStars(uint256 _tokenId1, uint256 _tokenId2) public {
+        require(ownerOf(_tokenId1) == msg.sender || ownerOf(_tokenId2) == msg.sender , "You need to be one of the owners");
         //1. Passing to star tokenId you will need to check if the owner of _tokenId1 or _tokenId2 is the sender
         //2. You don't have to check for the price of the token (star)
         //3. Get the owner of the two tokens (ownerOf(_tokenId1), ownerOf(_tokenId1)
         //4. Use _transferFrom function to exchange the tokens.
+        address owner1 = ownerOf(_tokenId1);
+        address owner2 = ownerOf(_tokenId2);
+        _transferFrom(owner1,owner2,_tokenId1);
+        _transferFrom(owner2,owner1,_tokenId2);
     }
 
     // Implement Task 1 Transfer Stars
     function transferStar(address _to1, uint256 _tokenId) public {
         //1. Check if the sender is the ownerOf(_tokenId)
         //2. Use the transferFrom(from, to, tokenId); function to transfer the Star
+        require(ownerOf(_tokenId) == msg.sender);
+        _transferFrom(msg.sender,_to1,_tokenId);
     }
 
 }
