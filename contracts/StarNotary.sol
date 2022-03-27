@@ -8,15 +8,7 @@ import "../node_modules/openzeppelin-solidity/contracts/token/ERC721/ERC721.sol"
 // StarNotary Contract declaration inheritance the ERC721 openzeppelin implementation
 contract StarNotary is ERC721 {
 
-    // function supportsInterface(bytes4 interfaceId) public view virtual override(ERC165, IERC165) returns (bool) {}
-    // constructor(string memory name_, string memory symbol_) public {
-    //     _name = name_;
-    //     _symbol = symbol_;
-    // }
-
     constructor() ERC721("Star", "STR") {}
-    function ownerOf(uint256 tokenId) external view override returns (address owner) {}
-    function balanceOf(address owner) external view override returns (uint256 balance) {}
 
     // Star data
     struct Star {
