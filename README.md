@@ -40,6 +40,7 @@ truffle version
 ```bash
 cd app
 # install packages
+nvm install 11.15
 npm install --save  openzeppelin-solidity@2.3
 npm install --save  truffle-hdwallet-provider@1.0.17
 npm install webpack-dev-server -g
@@ -66,6 +67,10 @@ npm install
 
 2. Start Truffle by running
 ```bash
+
+# Using the latest long term support version of node.js
+nvm use --lts
+
 # For starting the development console
 truffle develop
 # truffle console
